@@ -5,6 +5,10 @@ const StyledBar = styled.div`
 	height: 100%;
 	background-color: ${({ theme }) => theme.primary};
 	transition: width 1s ease;
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	position: absolute;
 `;
 
 const BarWrap = styled.div`
@@ -16,6 +20,16 @@ const BarWrap = styled.div`
 	margin-top: 30px;
 	margin-bottom: 30px;
 	border: 2px solid ${({ theme }) => theme.dark};
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+`;
+
+const CompleteNum = styled.span`
+	color: ${({ theme }) => theme.dark};
+	position: absolute;
+	z-index: 2;
 `;
 
 const ProgressBar = ({ tasks }) => {
@@ -30,7 +44,8 @@ const ProgressBar = ({ tasks }) => {
 
 	return (
 		<BarWrap>
-			<StyledBar width={percent} />
+			<CompleteNum>{Math.floor(percent)}%</CompleteNum>
+			<StyledBar width={percent}></StyledBar>
 		</BarWrap>
 	);
 };
